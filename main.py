@@ -132,7 +132,7 @@ def _forecast_case(case):
     # explosion cannot happen. Verified on a synthetic S=0.081 case:
     # median at h240 = 1.00x last price (raw v5: 3.74x).
     pull_gate = _gate(total, PULL_LO, PULL_HI)
-    pull_base = SUM_PULL * pull_gate * (total - 1.0) / total if total > 0 else 0.0
+    pull_base = (SUM_PULL * pull_gate * (total - 1.0) / total) if total > 0 else 0.0
     # Sum-gated Jensen median decay (v5 term).
     jensen_gate = _gate(total, JENSEN_LO, JENSEN_HI)
     decay_k = JENSEN_SCALE * jensen_gate
